@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>hello world</title>
+</head>
+
+<body>
+  <!--   所有要被angular管理的代码都必须包含在一个含有ng-app指令的元素中， ng-app是ng的入口，表示当前元素所有指令都会被angular管理（对每一个指令进行分析和操作） -->
+  <div ng-app ng-init='world'>
+    <h1>使用ng实现双向数据绑定</h1>
+    <p>
+      <!-- ng-model是双向数据绑定的指令，效果是将当前元素的value值与模型中的user.name建立绑定关系 -->
+      <input type="text" placeholder="请输入用户名" ng-model="user.name" />
+    </p>
+    <p>hello <strong>{{user.name}}</strong></p>
+  </div>
+  <script src="node_modules/angular/angular.js"></script>
+</body>
+
+</html>
