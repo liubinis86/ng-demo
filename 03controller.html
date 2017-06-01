@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>controller</title>
+</head>
+
+<body ng-app="myModule" ng-controller="moduleController">
+</body>
+<script src="node_modules/angular/angular.js"></script>
+<script>
+//由于控制器是必须出现在某个模块下的，所以想创建一个控制器，必须先创建一个模块
+var module = angular.module('myModule', []);
+// angular在执行控制器函数时， 会根据参数的名字($scope) 去自动注入对象，根据参数名称传递对应对象
+// 所以必须写正确的参数名称
+// module.controller('moduleController', function($scope) {
+//   console.log($scope);
+// });
+//由于压缩代码会改变参数的名称，注册控制器的标准方式是通过第二个参数传递数组的方式（数组的成员最后一个就是原本的控制器函数，前面的成员都是需要注入的对象的名称）
+module.controller('moduleController', ['$scope', '$http', function(a, b) {
+  console.log(a);
+  console.log(b);
+}])
+</script>
+
+</html>
