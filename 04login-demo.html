@@ -26,6 +26,10 @@
         <input type="button" value="登录" ng-click="login()" />
       </td>
     </tr>
+    <tr>
+      <td></td>
+      <td>{{message}}</td>
+    </tr>
   </table>
   <script src="node_modules/angular/angular.js"></script>
   <script>
@@ -43,6 +47,20 @@
       // 因为数据的变化是双向传递的，所以界面上的值会自动同步到$scope中
       console.log($scope.user);
     };
+    $scope.message = '请输入用户名';
+    $scope.$watch('user.username', function(now, old) {
+      // console.log('now is ' + now);
+      // console.log('old is ' + old);
+      if (now) {
+        if (now.length < 7) {
+          $scope.message = '输入格式不正确';
+        } else {
+          $scope.message = '';
+        }
+      } else {
+        $scope.message = '请输入用户名';
+      }
+    });
     // angular基本不操作DOM，如果必要，可以使用angular提供的jqlite
   }])
   </script>
