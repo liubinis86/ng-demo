@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>利用a链接对象解析URL的组成</title>
+</head>
+
+<body>
+  <script>
+  (function(window) {
+    // 可以通过 window.location 拿到url的所有信息
+
+    // http://www.baidu.com:8080/aaa/1.html?id=10#name
+    //
+    // protocol: http
+    // host: www.baidu.com:8080
+    // hostname: www.baidu.com
+    // port: 8080
+    // pathname: /aaa/1.html
+    // search: ?id=10
+    // hash: #name
+    // 用A链接对象解析url的组成
+    var url = 'http://www.baidu.com:8080/aaa/1.html?id=10#name';
+    var aLink = window.document.createElement('a');
+    aLink.href = url;
+    console.log(aLink);
+    //协议\架构
+    console.log(aLink.protocol);
+    //主机
+    console.log(aLink.host);
+    //主机名(域名)
+    console.log(aLink.hostname);
+    //端口号
+    console.log(aLink.port);
+    //路径名
+    console.log(aLink.pathname);
+    //查询值
+    console.log(aLink.search);
+    //哈希值
+    console.log(aLink.hash);
+
+  })(window)
+  </script>
+</body>
+
+</html>
