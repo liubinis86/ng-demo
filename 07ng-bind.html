@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>ng-bind指令与ng-bind-html指令</title>
+</head>
+<!-- ng-bind指令在绑定的值包含html时会自动转译，防止恶意跨站脚本攻击以保证安全 -->
+<!-- <body ng-app ng-init="username='<h1>刘彬</h1>'">
+  <strong ng-bind="username"></strong>
+  <script src="node_modules/angular/angular.js"></script>
+  <script>
+  </script>
+</body> -->
+
+<body ng-app="myApp" ng-init="username='<h1>刘彬</h1>'">
+  <strong ng-bind-html="username"></strong>
+  <script src="node_modules/angular/angular.js"></script>
+  <script src="node_modules/angular-sanitize/angular-sanitize.js"></script>
+  <script>
+  // 使用自定义的模块才能依赖别的包里面定义的模块， angular定义的模块没有依赖任何模块
+  angular.module('myApp', ['ngSanitize']);
+  </script>
+</body>
+
+</html>
