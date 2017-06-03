@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <style>
+  .red {
+    color: red;
+  }
+  
+  .green {
+    color: green;
+  }
+  </style>
+</head>
+
+<body ng-app="myApp">
+  <input type="text" ng-model="lastname" />
+  <ul ng-controller="myController">
+    <!-- 当ng-repeat遍历的数组中包含重复元素时会报错，这时可以用track by 加上一个唯一的标识符来解决浏览器报错的问题 -->
+    <li ng-repeat="name in ary track by $index" ng-class="{red:lastname!=''&&name.startsWith(lastname)}">{{name}}</li>
+  </ul>
+  <script src="node_modules/angular/angular.js"></script>
+  <script>
+  angular.module('myApp', [])
+    .controller('myController', ['$scope', function($scope) {
+      $scope.ary = ['张三', '赵四', '王五', '刘六六', '刘六六', '刘六六', '刘六六']
+    }])
+  </script>
+</body>
+
+</html>

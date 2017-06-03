@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>ng-class常用实例</title>
+  <style>
+  .red {
+    color: red;
+  }
+  
+  .green {
+    color: green;
+  }
+  </style>
+</head>
+
+<body ng-app='listApp'>
+  <ul ng-controller='listController'>
+    <!-- class="{{$even?'red':'green'}}" -->
+    <!-- ng-class会根据当前对象设置的属性和属性值决定是否添加特定类名 -->
+    <!-- 此方法较为常用 -->
+    <li ng-repeat="item in listData" ng-class="{red:$even,green:$odd}" data-id="{{item.id}}">
+      <strong ng-bind='item.name'></strong> &nbsp;&nbsp;
+      <span ng-bind='item.age'></span></li>
+  </ul>
+  <script src="node_modules/angular/angular.js"></script>
+  <script>
+  angular.module('listApp', [])
+    .controller('listController', ['$scope', function($scope) {
+      $scope.listData = [];
+      for (let i = 1; i < 10; i++) {
+        $scope.listData[$scope.listData.length] = {
+          id: i,
+          name: '86君' + i + '号',
+          age: i + 1 + '岁'
+        }
+      }
+    }])
+  </script>
+</body>
+
+</html>
