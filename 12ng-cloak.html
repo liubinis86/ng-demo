@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>ng-cloak指令</title>
+  <script src="node_modules/angular/angular.js"></script>
+</head>
+<!-- ng-cloak可以让浏览器加载完成前的angular表达式隐藏起来。用户体验更好 -->
+<!-- 引用angular.js脚本时，最好放在head里面，这样才能第一时间使ng-cloak生效 -->
+
+<body ng-app ng-cloak>
+  <span>{{'hello angluar'}}</span>
+</body>
+
+</html>
