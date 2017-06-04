@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>ng-xxx指令</title>
+</head>
+<!-- ng-blur：失去焦点 -->
+<!-- ng-focus:得到焦点 -->
+<!-- ng-change:发生改变 -->
+<!-- ng-copy:拷贝完成 -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!-- 以下三个较为常见 -->
+<!-- ng-click:鼠标单击 -->
+<!-- ng-dbclick:鼠标双击 -->
+<!-- ng-submit:表单提交 -->
+
+<body ng-app>
+  <div>
+    <input type="checkbox" ng-model="checked" />全选/取消</div>
+  <ul>
+    <!-- ng-checked和ng-selected只会做数据到视图的同步，不会做视图到数据的同步 -->
+    <li>选项01
+      <input type="checkbox" ng-checked="checked" />
+    </li>
+    <li>选项02
+      <input type="checkbox" ng-checked="checked" />
+    </li>
+    <li>选项03
+      <input type="checkbox" ng-checked="checked" />
+    </li>
+    <li>选项04
+      <input type="checkbox" ng-checked="checked" />
+    </li>
+    <li>选项05
+      <input type="checkbox" ng-checked="checked" />
+    </li>
+  </ul>
+  <script src="node_modules/angular/angular.js"></script>
+</body>
+
+</html>
