@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>ng自定义指令,封装面包屑导航</title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+
+<body ng-app="myApp" ng-controller="myController">
+  <breadcrumb data="{{pathData1}}"></breadcrumb>
+  <breadcrumb data="{{pathData2}}"></breadcrumb>
+  <script src="node_modules/angular/angular.js"></script>
+  <script>
+  var myApp = angular.module('myApp', []);
+  myApp.controller('myController', ['$scope', function($scope) {
+    $scope.pathData1 = {
+      home: "#",
+      game: "#",
+      play: "#"
+    };
+    $scope.pathData2 = {
+      home: "#",
+      lib: "#",
+      bootstrap: "#",
+      css: "#"
+    };
+  }]);
+  //定义一个面包屑导航
+  myApp.directive('breadcrumb', [function() {
+    // 返回指令对象
+    return {
+      // 指定当前指令的类型什么样的
+      // restrict: 'EA',
+      // // E = Element, A = Attribute, C = Class, M = Comment
+      scope: {},
+      template: '<ol class="breadcrumb"><li ng-repeat="(key, value) in data track by $index" ng-class="{active:$last}"> <a href="{{value}}" ng-if="!$last">{{key}}</a><span ng-if="$last">{{key}}</span></li></ol>',
+      replace: true,
+      link: function(scope, element, attributes) {
+          scope.data = JSON.parse(attributes.data);
+        }
+        // transclude: true,
+    };
+  }]);
+  </script>
+</body>
+
+</html>
